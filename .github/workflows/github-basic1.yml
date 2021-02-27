@@ -11,10 +11,6 @@ on:
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  #workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs: 
   # This workflow contains a single job called "build"
  my_testing:
@@ -34,8 +30,7 @@ jobs:
       - name: Execute few commands
         run: |
           echo "Hello World1"
-          echo "Hello World1"
-          # print from galobal variable          
+          echo "Hello World1"      
           echo "Application name: ${{ env.APPLICATION_NAME }}"
           
       - name: List current folder
@@ -50,7 +45,6 @@ jobs:
         run : echo "Hello World from Deploy job!"
         
       - name: Printing Deployment package
-        #print SHA number from global variable
         run : echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME  }}"
         
       - name: Test aws package cli exist
