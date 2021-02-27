@@ -29,13 +29,14 @@ jobs:
       
       # Runs a single command using the runners shell
       - name: Print Hello Message in Testing
-        run: echo "Hello, world!"
+        run : echo "Hello, world!"
         
       - name: Execute few commands
         run: |
           echo "Hello World1"
           echo "Hello World1"
-          echo "Application name: ${{ env.APPLICATION_NAME }}"              #print from galobal variable
+          # print from galobal variable          
+          echo "Application name: ${{ env.APPLICATION_NAME }}"
           
       - name: List current folder
         run: ls -la
@@ -49,8 +50,9 @@ jobs:
         run : echo "Hello World from Deploy job!"
         
       - name: Printing Deployment package
-        run: echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME  }}"                     #print SHA number from global variable
+        #print SHA number from global variable
+        run : echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME  }}"
         
       - name: Test aws package cli exist
-        run: aws --version
+        run : aws --version
         
