@@ -19,22 +19,20 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- name: Git clone my repo
-      #- uses: actions/checkout@v1
-      
-      # Runs a single command using the runners shell
       - name: Print Hello Message in Testing
         run : echo "Hello, world!"
         
       - name: Execute few commands
-        run: |
+        run : |
           echo "Hello World1"
           echo "Hello World1"      
           echo "Application name: ${{ env.APPLICATION_NAME }}"
           
       - name: List current folder
-        run: ls -la
+        run : ls -la
+        
+      - name: Git clone my repo
+      - uses: actions/checkout@v2
         
  my_deploy:
     runs-on: ubuntu-latest
