@@ -14,7 +14,7 @@ on:
   #workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
+jobs: 
   # This workflow contains a single job called "build"
  my_testing:
     # The type of runner that the job will run on
@@ -25,12 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       #- uses: actions/checkout@v2     
       # Runs a single command using the runners shell
-      - name: Print Hello Message 
+      - name: Print Hello Message in Testing
         run: echo "Hello, world!"
-      # Runs a set of commands using the runners shell
+        
  my_deploy:
     runs-on: ubuntu-latest
+    needs: [my_testing]
+    
     steps:
-      - name: Print Hello Massege
+      - name: Print Hello Massege in Deploy
         run : echo "Hello World from Deploy job!" 
         
