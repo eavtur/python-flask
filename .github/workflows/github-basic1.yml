@@ -1,8 +1,9 @@
-# This is a basic workflow to help you get started with Actions
-
 name: My-CI-GitHub-Action 
-
-# Controls when the action will run. 
+env:
+# Global variebles
+  APPLICATION_NAME   : "MyFlask"
+  DEPLOY_PACKAGE_NAME:  "flask-deploy-ver-${{ github.sha }}"              #print SHA number
+  
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -28,11 +29,21 @@ jobs:
       - name: Print Hello Message in Testing
         run: echo "Hello, world!"
         
+      - name: Execute few commands
+        run: |
+          echo "Hello World1"
+          echo "Hello World1"
+          echo "Application name: ${{ env.APPLICATION_NAME }}"              #print from galobal varieble
+        
+        
  my_deploy:
     runs-on: ubuntu-latest
     needs: [my_testing]
     
     steps:
       - name: Print Hello Massege in Deploy
-        run : echo "Hello World from Deploy job!" 
+        run : echo "Hello World from Deploy job!"
+        
+      - name: Printing Deployment package
+        run: echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME  }}"                     #print SHA number from global variable
         
